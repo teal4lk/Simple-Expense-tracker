@@ -1,4 +1,6 @@
 import pandas as pd
+import matplotlib.pyplot as plt
+from datetime import datetime
 
 class Tracker:
     def __init__(self):
@@ -26,6 +28,7 @@ class Tracker:
         })
 
         df_to_append.to_csv(self.__data_path, mode='a', index=False, header=False)
+        self.__df = pd.read_csv(self.__data_path)
         self.added = True
     def total_expense(self):
         if self.__added:
@@ -40,13 +43,21 @@ class Tracker:
         if category is None:
             return pd.pivot_table(self.__df, values='Amount', index=['Category'], aggfunc='sum')
         else: 
+            if category not in self.__df['Category'].values:
+                return f"No expenses found for category: {category}"
             return pd.pivot_table(self.__df, values='Amount', index=['Category'], aggfunc='sum').loc[category]
-    def expense_trend(self):
+    
+    def expense_trend(self, Plot=False):
         if self.__added:
             self.__df = pd.read_csv(self.__data_path)
             self.__added = False
-        print(self.__df)
-        # print(pd.pivot_table(self.__df, values='Amount', index=['Date'], aggfunc='sum'))
+        if Plot:
+            pd.pivot_table(self.__df, values='Amount', index=['Date'], aggfunc='sum').plot.line()
+            plt.title('Line Plot of Expense Trends Over Time')
+            plt.xlabel('Date')
+            plt.ylabel('Amount Spent')
+            plt.show()
+        return pd.pivot_table(self.__df, values='Amount', index=['Date'], aggfunc='sum')
 
 
     def Highest_and_lowest_spend_category(self):
