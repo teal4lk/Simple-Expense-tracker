@@ -51,6 +51,6 @@ Optional cases are where the user is asked to supply input. The user can also si
 
 ## Room for Improvement
 
-As this is a basic expense tracker, the goal was to keep things simple and easy to run. Potential area for improvement would be improved customization options for the code and analysis as well as theoretically turning it into a UI. Additionally, more rigorous testing can always occur.
+As this is a basic expense tracker, the goal was to keep things simple and easy to run. Potential area for improvement would be adding capability to handle more types of input such as date formats. Potential to cancel adding a new expense mid expense. As well as making the code more intuitive.
 
 Thank you.
