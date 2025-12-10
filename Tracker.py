@@ -30,13 +30,28 @@ class Tracker:
         df_to_append.to_csv(self.__data_path, mode='a', index=False, header=False)
         self.__df = pd.read_csv(self.__data_path)
         self.added = True
+    
     def total_expense(self):
+        '''
+        Docstring for total_expense
+        Description: finds and returns the total expense amount
+        :param self: just includes the class instance
+        :return: total expense amount
+        '''
         if self.__added:
             self.__df = pd.read_csv(self.__data_path)
             self.added = False
         return self.__df['Amount'].sum()
 
     def total_expense_by_category(self, category=None):
+        '''
+        Docstring for total_expense_by_category
+        Description: finds and returns the total expense amount by category
+
+        :param self: just includes the class instance
+        :param category: Optional category to filter by. Default is None.
+        :return: total expense amount by category
+        '''
         if self.__added:
             self.__df = pd.read_csv(self.__data_path)
             self.__added = False
@@ -48,6 +63,14 @@ class Tracker:
             return pd.pivot_table(self.__df, values='Amount', index=['Category'], aggfunc='sum').loc[category]
     
     def expense_trend(self, Plot=False):
+        '''
+        Docstring for expense_trend
+        Description: Optionally plots using matplotlib and returns the expense trend over time
+
+        :param self: Just includes the class instance
+        :param Plot: Includes whether to plot the trend or not. Default is False.
+        :return: expense trend over time
+        '''
         if self.__added:
             self.__df = pd.read_csv(self.__data_path)
             self.__added = False
@@ -61,6 +84,13 @@ class Tracker:
 
 
     def Highest_and_lowest_spend_category(self):
+        '''
+        Docstring for Highest_and_lowest_spend_category
+        Description: finds and returns the highest and lowest spend categories
+        
+        :param self: Just includes the class instance
+        :return: dictionary with highest and lowest spend categories
+        '''
         lowest = None
         highest = None
         if self.__added:
