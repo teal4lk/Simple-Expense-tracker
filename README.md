@@ -30,6 +30,13 @@ This is the file that the data is stored in. If it doesn't exist it will be crea
 ## Running/Using the code
 Capitalization does not matter, however spelling does.
 
+Running the code should give the user the following prompt: 
+
+
+<img width="538" height="119" alt="image" src="https://github.com/user-attachments/assets/0a20204c-e4d9-4519-bc4c-503138cdebba" />
+
+ **Options:**
+
 > 0 - Exit the program
 >   * Can also be achieved by typing "exit" or "quit"
 > 
@@ -48,6 +55,9 @@ Capitalization does not matter, however spelling does.
 > h - offers the options again
 
 Optional cases are where the user is asked to supply input. The user can also simply press enter and move on.
+
+User can give their input and will be prompted further depending on their selection. The program runs until an error is found or the user's input requests to leave the program.
+
 
 ## Room for Improvement
 
