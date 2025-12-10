@@ -12,11 +12,22 @@ To install Matplotlib:
 
 ```pip install matplotlib```
 
-## How to Run the Code
+## Code Design
+
+This code uses Object Oriented Programming to run.
+
+### Tracker.py
+This is the object, tracker. It stores the data in the csv and has various functions to track and analyze the data.
+
+### Tracking.py
+This is the main function and the file to use to run the code.
 
 Code should run in any code editor. Simply copy the github repo and press run. The code will run on the terminal.
 
-### Options in the code
+### Data.csv
+This is the file that the data is stored in. If it doesn't exist it will be created.
+
+## Running/Using the code
 Capitalization does not matter, however spelling does.
 
 > 0 - Exit the program
@@ -37,3 +48,9 @@ Capitalization does not matter, however spelling does.
 > h - offers the options again
 
 Optional cases are where the user is asked to supply input. The user can also simply press enter and move on.
+
+## Room for Improvement
+
+As this is a basic expense tracker, the goal was to keep things simple and easy to run. Potential area for improvement would be improved customization options for the code and analysis as well as theoretically turning it into a UI. Additionally, more rigorous testing can always occur.
+
+Thank you.
