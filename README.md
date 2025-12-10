@@ -17,7 +17,7 @@ To install Matplotlib:
 Code should run in any code editor. Simply copy the github repo and press run. The code will run on the terminal.
 
 ### Options in the code
-Capitalization does not matter spelling does.
+Capitalization does not matter, however spelling does.
 
 > 0 - Exit the program
 >   * Can also be achieved by typing "exit" or "quit"
