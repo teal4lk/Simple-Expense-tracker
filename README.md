@@ -25,7 +25,7 @@ This is the main function and the file to use to run the code.
 Code should run in any code editor. Simply copy the github repo and press run. The code will run on the terminal.
 
 ### Data.csv
-This is the file that the data is stored in. If it doesn't exist it will be created.
+This is the file that the data is stored in. If it doesn't exist it will be created. The current numbers are sample numbers for one to try and test out.
 
 ## Running/Using the code
 Capitalization does not matter, however spelling does.
