@@ -2,6 +2,7 @@
 Creates a simple expense tracker using python
 
 ## Requirements to use the code
+### Python
 This code uses the libraries Pandas and Matplotlib
 
 To install Pandas: 
@@ -11,6 +12,8 @@ To install Pandas:
 To install Matplotlib:
 
 ```pip install matplotlib```
+### Java
+All classes imported and used should already be contained within java.
 
 ## Code Design
 
@@ -45,10 +48,10 @@ Running the code should give the user the following prompt:
 > 2 - Get total Expense
 > 
 > 3 - Get expense by category
->   * OPTIONAL: Offers the ability to select a specific singular category to look at the data for
+>   * OPTIONAL (python only): Offers the ability to select a specific singular category to look at the data for
 >
 > 4 - Expense Trend
->     * OPTIONAL: Offers the ability to see the expense trend as a table using matplotlib
+>     * OPTIONAL (python only): Offers the ability to see the expense trend as a table using matplotlib
 > 
 > 5 -  Get the Highest and Lowest Spend Category
 > 
