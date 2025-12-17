@@ -23,6 +23,8 @@ public class tracking_j{
                 if (Integer.parseInt(user_input) == 1) {
                     System.out.println("Adding an Expense to the tracker");
                     String category = System.console().readLine("Enter category: ");
+                    category = category.substring(0,1).toUpperCase() 
+                            + category.substring(1).toLowerCase();
                     String amount = System.console().readLine("Enter amount: ");
                     while (!isNum(amount)){
                         System.out.println("Invalid amount. Please enter a numeric value.");
@@ -74,10 +76,18 @@ public class tracking_j{
                     System.out.println("Invalid option. Please try again.");
                 }
             } else {
-                if (user_input.equalsIgnoreCase("exit")) {
+                if (user_input.equalsIgnoreCase("exit") 
+                    || user_input.equalsIgnoreCase("quit")) {
                     continue_program = false;
                     System.out.println("Thank you for using the Expense Tracker. Goodbye!");
-                } else { 
+                }else if (user_input.equalsIgnoreCase("help") 
+                    || user_input.equalsIgnoreCase("options") 
+                    || user_input.equalsIgnoreCase("menu")
+                    || user_input.equalsIgnoreCase("h")
+                    || user_input.equalsIgnoreCase("m")
+                    || user_input.equalsIgnoreCase("o")) {
+                    System.out.println(Options); 
+                }else { 
                     System.out.println("Invalid option. Please try again.");
                 }
             }
@@ -107,11 +117,13 @@ public class tracking_j{
         } else {
             if (isNum(str.substring(0,4))) {
                 if (isNum(str.substring(5,7))) {
-                    if (Integer.parseInt(str.substring(5, 7))>12 || Integer.parseInt(str.substring(5, 7)) <= 0) {
+                    if (Integer.parseInt(str.substring(5, 7))>12 
+                        || Integer.parseInt(str.substring(5, 7)) <= 0) {
                         return false;
                     } else {
                         if (isNum(str.substring(8,10))) {
-                            if (Integer.parseInt(str.substring(8, 10))>31 || Integer.parseInt(str.substring(8, 10)) <= 0) {
+                            if (Integer.parseInt(str.substring(8, 10))>31 
+                            || Integer.parseInt(str.substring(8, 10)) <= 0) {
                                 return false;
                             } else {
                                 return true;
