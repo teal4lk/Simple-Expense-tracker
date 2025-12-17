@@ -51,7 +51,8 @@ Running the code should give the user the following prompt:
 >   * OPTIONAL (python only): Offers the ability to select a specific singular category to look at the data for
 >
 > 4 - Expense Trend
->     * OPTIONAL (python only): Offers the ability to see the expense trend as a table using matplotlib
+>
+>   * OPTIONAL (python only): Offers the ability to see the expense trend as a table using matplotlib
 > 
 > 5 -  Get the Highest and Lowest Spend Category
 > 
