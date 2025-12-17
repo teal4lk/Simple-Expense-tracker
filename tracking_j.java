@@ -1,4 +1,4 @@
-import java.text.ParseException;
+// import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 public class tracking_j{
@@ -28,39 +28,41 @@ public class tracking_j{
                         System.out.println("Invalid amount. Please enter a numeric value.");
                         amount = System.console().readLine("Enter amount: ");
                     }
-
                     String date = System.console().readLine("Enter date (YYYY-MM-DD): ");
                     boolean valid_date = false;
                     Date date_expense = null;
-                    while(!valid_date && date.length() == 10) {
-                        if (isNum(date.substring(0,4))) {
-                            if (isNum(date.substring(5,7))) {
-                                if (isNum(date.substring(8,10))) {
-                                    valid_date = true;
-                                    try {
-                                        date_expense = new SimpleDateFormat("yyyy-MM-dd").parse(date);
-                                    } catch (Exception e) {
-                                        System.out.println("An error occurred while parsing the date.");
+                    while(!valid_date || date.length() != 10) {
+                        if (date.length() != 10) {
+                            date = System.console().readLine("Incorect date format. Please enter date (YYYY-MM-DD): ");
+                        } else {
+                            if (isNum(date.substring(0,4))) {
+                                if (isNum(date.substring(5,7))) {
+                                    if (isNum(date.substring(8,10))) {
+                                        valid_date = true;
+                                        try {
+                                            date_expense = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+                                        } catch (Exception e) {
+                                            System.out.println("An error occurred while parsing the date. Please try again.");
+                                            valid_date = false;
+                                        } 
+                                    
+                                    } else {
+                                        System.out.println("Invalid date format. Please enter date in YYYY-MM-DD format.");
+                                        date = System.console().readLine("Enter date (YYYY-MM-DD): ");
                                         valid_date = false;
                                     } 
+                                } else {
+                                    System.out.println("Invalid date format. Please enter date in YYYY-MM-DD format.");
+                                    date = System.console().readLine("Enter date (YYYY-MM-DD): ");
+                                    valid_date = false;
                                 }
+                            } else {
+                                System.out.println("Invalid date format. Please enter date in YYYY-MM-DD format.");
+                                date = System.console().readLine("Enter date (YYYY-MM-DD): ");
+                                valid_date = false;
                             }
-                        } else {
-                            System.out.println("Invalid date format. Please enter date in YYYY-MM-DD format.");
-                            date = System.console().readLine("Enter date (YYYY-MM-DD): ");
-                            valid_date = false;
                         }
-                }
-                    // while (!valid_date) {
-                    //     try {
-                    //         date_expense = new SimpleDateFormat("yyyy-MM-dd").parse(date);
-                    //         valid_date = true;
-
-                    //     } catch (ParseException e) {
-                    //         System.out.println("Invalid date format. Please enter date in YYYY-MM-DD format.");
-                    //         date = System.console().readLine("Enter date (YYYY-MM-DD): ");
-                    //     }
-                    // }
+                    }
 
                     tracking.addExpense(date_expense, category, Double.parseDouble(amount));
                 

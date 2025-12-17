@@ -29,6 +29,7 @@ public class SimpleTracker {
      */
     private static boolean ifFileExist(){
         try (BufferedReader br = new BufferedReader(new FileReader(CSV))) {
+            br.close();
             return true;
         } catch (IOException e) {
             return false;
@@ -42,7 +43,6 @@ public class SimpleTracker {
      */
     public void addExpense(Date date, String category, double amount) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        System.out.println(sdf.format(date));
         if (!ifFileExist()) {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(CSV))) {
                 writer.write("Date,Category,Amount\n");
@@ -174,7 +174,7 @@ public class SimpleTracker {
                     lowest_category = entry.getKey();
                 }
             }
-            System.out.println("Highest Spend Category: " + highest_category + " \n Lowest Spend Category: " + lowest_category);
+            System.out.println("Highest Spend Category: " + highest_category + " \nLowest Spend Category: " + lowest_category);
         } else {
             System.out.println("No expenses recorded yet.");
         }
