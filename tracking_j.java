@@ -29,37 +29,26 @@ public class tracking_j{
                         amount = System.console().readLine("Enter amount: ");
                     }
                     String date = System.console().readLine("Enter date (YYYY-MM-DD): ");
-                    boolean valid_date = false;
+                    boolean valid_date = isDate(date);
                     Date date_expense = null;
-                    while(!valid_date || date.length() != 10) {
-                        if (date.length() != 10) {
-                            date = System.console().readLine("Incorect date format. Please enter date (YYYY-MM-DD): ");
-                        } else {
-                            if (isNum(date.substring(0,4))) {
-                                if (isNum(date.substring(5,7))) {
-                                    if (isNum(date.substring(8,10))) {
-                                        valid_date = true;
-                                        try {
-                                            date_expense = new SimpleDateFormat("yyyy-MM-dd").parse(date);
-                                        } catch (Exception e) {
-                                            System.out.println("An error occurred while parsing the date. Please try again.");
-                                            valid_date = false;
-                                        } 
-                                    
-                                    } else {
-                                        System.out.println("Invalid date format. Please enter date in YYYY-MM-DD format.");
-                                        date = System.console().readLine("Enter date (YYYY-MM-DD): ");
-                                        valid_date = false;
-                                    } 
-                                } else {
+                    if (valid_date) {
+                        try {
+                            date_expense = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+                        } catch (Exception e) {
+                            System.out.println("Invalid date format. Please enter date in YYYY-MM-DD format.");
+                            valid_date = false;
+                        } 
+                    } else {
+                        while(!valid_date) {
+                            date = System.console().readLine("Enter date (YYYY-MM-DD): ");
+                            valid_date = isDate(date);
+                            if (valid_date) {
+                                try {
+                                    date_expense = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+                                } catch (Exception e) {
                                     System.out.println("Invalid date format. Please enter date in YYYY-MM-DD format.");
-                                    date = System.console().readLine("Enter date (YYYY-MM-DD): ");
                                     valid_date = false;
                                 }
-                            } else {
-                                System.out.println("Invalid date format. Please enter date in YYYY-MM-DD format.");
-                                date = System.console().readLine("Enter date (YYYY-MM-DD): ");
-                                valid_date = false;
                             }
                         }
                     }
@@ -96,8 +85,8 @@ public class tracking_j{
     }
     /**
      * Checks if a string is numeric.
-     * @param str
-     * @return
+     * @param str - string to check 
+     * @return - true if the string is numeric, false otherwise
      */
     public static boolean isNum(String str) {
         for (char c : str.toCharArray()) {
@@ -106,6 +95,38 @@ public class tracking_j{
             }
         }
         return true;
+    }
+    /**
+     * Checks if a string is a valid date in the format YYYY-MM-DD.
+     * @param str - the string to check
+     * @return - true if the string is a valid date, false otherwise
+     */
+    public static boolean isDate(String str){
+        if (str.length() != 10) {
+            return false;
+        } else {
+            if (isNum(str.substring(0,4))) {
+                if (isNum(str.substring(5,7))) {
+                    if (Integer.parseInt(str.substring(5, 7))>12 || Integer.parseInt(str.substring(5, 7)) <= 0) {
+                        return false;
+                    } else {
+                        if (isNum(str.substring(8,10))) {
+                            if (Integer.parseInt(str.substring(8, 10))>31 || Integer.parseInt(str.substring(8, 10)) <= 0) {
+                                return false;
+                            } else {
+                                return true;
+                            } 
+                        } else {
+                            return false;
+                        }
+                    } 
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
     }
 }
 

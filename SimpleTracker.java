@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class SimpleTracker {
+    //The variable that holds the path of the CSV file
     private static final String CSV = "data_j.csv";
     private static  BufferedReader reader = null;
 
@@ -80,10 +81,10 @@ public class SimpleTracker {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        System.out.printf("Total Expense: %.2f\n", total);
-    } else {
-        System.out.println("No expenses recorded yet.");
-    }
+            System.out.printf("Total Expense: %.2f\n", total);
+        } else {
+            System.out.println("No expenses recorded yet.");
+        }
     }
     /**
      * Calculates and prints the total expense by category from the CSV file.
